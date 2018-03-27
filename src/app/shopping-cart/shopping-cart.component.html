@@ -1,0 +1,18 @@
+<div>
+  <div class="container">
+      <div *ngFor="let list of shoppingInventory">
+        <div class="row">
+          <div *ngFor="let item of list">
+            <div class="col-sm-5 m-sm-5">
+              <app-product-item [src]="item.productURL"
+                                [productName]="item.productName"
+                                [unitPrice]="item.unitPrice"
+                                [quantity]="getSelectedQuantity(item.productName)"
+                                (updateShoppingCart)="updateShoppingCart($event)" >
+              </app-product-item>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
