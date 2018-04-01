@@ -49,7 +49,7 @@ export class ProductItemComponent {
     this.item.unitPrice = this.unitPrice;
     this.item.quantity = this.quantity;
     this.item.totalPrice = this.totalPrice;
-
+    this.item.imagePath = this.src;
 
       this.updateShoppingCart.emit(this.item);
 

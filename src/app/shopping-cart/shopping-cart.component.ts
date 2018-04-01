@@ -55,6 +55,10 @@ export class ShoppingCartComponent implements OnInit {
     } else {
       this.shoppingCart.shoppingItem.push(item);
     }
+    if(item.quantity === 0) {
+      let index=this.shoppingCart.shoppingItem.findIndex((i)=>  i.productName === item.productName);
+      this.shoppingCart.shoppingItem.splice(index,1);
+    }
    console.log(this.shoppingCart);
   }
 

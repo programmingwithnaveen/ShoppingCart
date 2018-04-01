@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShoppingCart} from './shopping-cart/data/shopping-item';
 import {ShoppingCartData} from './services/shopping-cart.data';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,12 @@ export class AppComponent {
 
 
   shoppingCart: ShoppingCart ;
-  constructor( private shoppingCartData: ShoppingCartData) {
-
+  constructor(private router: Router, private shoppingCartData: ShoppingCartData) {
+   // this.shoppingCart=this.shoppingCartData.getCheckout();
     this.shoppingCartData.shoppingCartData$.subscribe(shoppingCart => {
       this.shoppingCart = shoppingCart;
     });
+    this.router.navigate(['product/All']);
 
   }
 }

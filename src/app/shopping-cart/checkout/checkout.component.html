@@ -1,0 +1,59 @@
+<div class="container page-header">
+  <div class="row">
+  <div class="col-4 m-auto">
+  <h1>Your Order Summary</h1></div>
+  <div class="col-2 m-auto"><a class="nav-link" routerLink="/product/All"><button class="btn btn-secondary" data-toggle="tooltip" title="Back">Back</button></a></div>
+    <div class="col-2 m-auto" *ngIf="shoppingCart?.shoppingItem?.length > 0"><button (click)="clearShoppingCart()"  class="btn btn-secondary" data-toggle="tooltip" title="Clear Shopping Cart">
+      <i class="fa fa-trash" aria-hidden="true"></i></button></div>
+    <div class="col-2 m-auto" *ngIf="shoppingCart?.shoppingItem?.length > 0" ><a class="nav-link" routerLink="/product/submit"><button class="btn btn-secondary" data-toggle="tooltip" title="Submit">Submit</button></a></div>
+  </div>
+</div>
+
+<div *ngIf="shoppingCart?.shoppingItem?.length > 0" class="container">
+    <div class="row">
+      <div class="col-2 m-2"></div>
+      <div class="col-2  m-auto">Product</div>
+      <div class="col-2  m-auto">Quantity</div>
+      <div class="col-2  m-auto">Price</div>
+      <div class="col-2  m-auto">Action</div>
+    </div>
+    <div *ngFor="let list of shoppingCart?.shoppingItem">
+      <div class="row">
+          <div class="col-2 m-2">
+            <img src="{{list.imagePath}}"/>
+          </div>
+        <div class="col-2  m-auto">
+          {{ list.productName}}
+        </div>
+        <div class="col-2  m-auto">
+              <button (click)="updateQuantity(true,list)" class="btn btn-secondary">
+                +
+              </button>
+              <span class="text-center">{{list.quantity}} in cart</span>
+              <button (click)="updateQuantity(false,list)" [disabled]="list.quantity <= 0 " class="btn btn-secondary" style="float: right;">
+                -
+              </button>
+        </div>
+        <div class="col-2  m-auto">
+          {{list.totalPrice | currency}}
+        </div>
+        <div class="col-2  m-auto">
+          <button (click)="deleteItem(list)"  class="btn btn-link" data-toggle="tooltip" title="Delete Item">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row row-bordered">
+      <div class="col-2 m-2"></div>
+      <div class="col-2 m-auto"></div>
+      <div class="col-2  m-auto">Total Price</div>
+      <div class="col-2  m-auto">{{ totalPrice() | currency }}</div>
+      <div class="col-2  m-auto"></div>
+    </div>
+  </div>
+
+
+
+
+

@@ -8,10 +8,18 @@ import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ShoppingCartNavigateComponent} from './shopping-cart/shopping-cart-navigate.component';
 import {ShoppingCartData} from './services/shopping-cart.data';
+import {CheckoutComponent} from "./shopping-cart/checkout/checkout.component";
+import {SubmitComponent} from "./shopping-cart/submit/submit.component";
+import {FormsModule} from "@angular/forms";
+import {SubmitConfirmationComponent} from "./shopping-cart/submit/submit-confirmation.component";
 
 const appRoutes: Routes = [
   { path: '',   component: ShoppingCartNavigateComponent },
+  { path: 'product/checkout',   component: CheckoutComponent },
+  { path: 'product/submit',   component: SubmitComponent },
+  { path: 'product/status',   component: SubmitConfirmationComponent },
   { path: 'product/:type',   component: ShoppingCartNavigateComponent }
+
 ];
 
 
@@ -20,12 +28,16 @@ const appRoutes: Routes = [
     AppComponent,
     ProductItemComponent,
     ShoppingCartComponent,
-    ShoppingCartNavigateComponent
+    ShoppingCartNavigateComponent,
+    CheckoutComponent,
+    SubmitComponent,
+    SubmitConfirmationComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [ShoppingServices,
