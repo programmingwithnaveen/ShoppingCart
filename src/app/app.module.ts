@@ -12,13 +12,20 @@ import {CheckoutComponent} from "./shopping-cart/checkout/checkout.component";
 import {SubmitComponent} from "./shopping-cart/submit/submit.component";
 import {FormsModule} from "@angular/forms";
 import {SubmitConfirmationComponent} from "./shopping-cart/submit/submit-confirmation.component";
+import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {manageOrders} from "./admin/manage-orders.component";
+import {manageInventory} from "./admin/manage-inventory.component";
+
 
 const appRoutes: Routes = [
   { path: '',   component: ShoppingCartNavigateComponent },
   { path: 'product/checkout',   component: CheckoutComponent },
   { path: 'product/submit',   component: SubmitComponent },
   { path: 'product/status',   component: SubmitConfirmationComponent },
-  { path: 'product/:type',   component: ShoppingCartNavigateComponent }
+  { path: 'product/:type',   component: ShoppingCartNavigateComponent },
+  { path: 'admin/manageorder',   component: manageOrders },
+  { path: 'admin/manageinventory',   component: manageInventory }
 
 ];
 
@@ -31,18 +38,22 @@ const appRoutes: Routes = [
     ShoppingCartNavigateComponent,
     CheckoutComponent,
     SubmitComponent,
-    SubmitConfirmationComponent
+    SubmitConfirmationComponent,
+    manageOrders,
+    manageInventory
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
 
   ],
   providers: [ShoppingServices,
-    ShoppingCartData],
-  bootstrap: [AppComponent]
+    ShoppingCartData,[Location, {provide: LocationStrategy, useClass: HashLocationStrategy}]],
+  bootstrap: [AppComponent],
+  entryComponents : [manageOrders]
 })
 export class AppModule {
 }

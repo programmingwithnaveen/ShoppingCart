@@ -7,6 +7,7 @@
               <app-product-item [src]="item.productURL"
                                 [productName]="item.productName"
                                 [unitPrice]="item.unitPrice"
+                                [uom]="item.uom"
                                 [quantity]="getSelectedQuantity(item.productName)"
                                 (updateShoppingCart)="updateShoppingCart($event)" >
               </app-product-item>

@@ -4,26 +4,24 @@ import {ShoppingCartData} from '../services/shopping-cart.data';
 
 @Component({
   selector: 'app-shopping-navigate-component',
-  template: `<div class="row">
-    <div class="col-1">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/product/All">All</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/product/Fruits">Fruits</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/product/Vegetables">Vegetables</a>
-        </li>
-      </ul>
+  template: `
+    <span class="m-2"></span>
+    <div class="row">
+    <div class="col-2">
       
-
+      <ul class="list-group">
+        <li class="list-group-item"><a class="nav-link" routerLink="/product/All">All</a></li>
+        <li class="list-group-item"><a class="nav-link" routerLink="/product/Fruits">Fruits</a></li>
+        <li class="list-group-item"><a class="nav-link" routerLink="/product/Vegetables">Vegetables</a></li>
+        <li class="list-group-item"><a class="nav-link" routerLink="/product/Dairy">Dairy</a></li>
+        <li class="list-group-item"><a class="nav-link" routerLink="/product/Bakery">Bakery & Pastery</a></li>
+        <li class="list-group-item"><a class="nav-link" routerLink="/product/Beverage">Beverage</a></li>
+      </ul>
     </div>
-    <div class="col-9">
+    <div class="col-8">
       <app-shopping-cart [shoppingCart]="shoppingCart"></app-shopping-cart>
     </div>
-    <div class="col-1 m-3">
+    <div class="col-1 m-3 ">
       <div *ngIf="shoppingCart.shoppingItem.length > 0">
         <a routerLink="/product/checkout" ><button class="btn btn-secondary">Checkout</button></a>
       </div>

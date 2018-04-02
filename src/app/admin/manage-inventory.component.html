@@ -1,0 +1,41 @@
+<span class="m-2"></span>
+<div class="container">
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Product code</th>
+      <th scope="col">Product Type</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Unit Price</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of inventoryList ">
+      <td><button class="btn btn-link" (click)="open(content,item)">{{item.productCode}}</button></td>
+      <td>{{item.productType}}</td>
+      <td>{{item.productName}}</td>
+      <td>{{item.unitPrice | currency}}</td>
+
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{item}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

@@ -8,7 +8,7 @@ import {ShoppingItem} from '../data/shopping-item';
       <img src="{{src}}"/>
       <div class="card-body">
         <h5 class="card-title">{{productName}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{unitPrice | currency}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{unitPrice | currency}}/{{uom}}</h6>
       </div>
       <div class="card-img-bottom">
         <div *ngIf="quantity == 0 ;else add_to_cart">
@@ -33,6 +33,7 @@ export class ProductItemComponent {
   @Input() productName: string;
   @Input() src: string;
   @Input() quantity ;
+  @Input() uom:string;
   totalPrice: number = this.unitPrice;
 
   @Output() updateShoppingCart = new EventEmitter();

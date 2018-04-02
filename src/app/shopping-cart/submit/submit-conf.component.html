@@ -1,5 +1,4 @@
 <div class="container">
-
 <div class="card" style="width: 50rem;">
   <div class="card-body">
     <h3 class="card-title">Order Placed</h3>
@@ -7,18 +6,17 @@
       <div class="row">
         <div class="col">
           <h6 class="card-subtitle mb-2 text-muted">Order Number</h6>
-          <p class="card-text">46546131</p>
+          <p class="card-text">12345</p>
         </div>
         <div class="col">
           <h6 class="card-subtitle mb-2 text-muted">Order Date</h6>
-          <p class="card-text">46546131</p>
+          <p class="card-text">{{orderDate | date}}</p>
         </div>
       </div>
     </div>
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h4 class="display-1">Shipment</h4>
-
+        <h1>Shipment</h1>
         <div class="row">
           <div class="col">
             <h6 class="card-subtitle mb-2 text-muted">Status</h6>
@@ -26,12 +24,10 @@
           </div>
           <div class="col">
             <h6 class="card-subtitle mb-2 text-muted">Expected Ship date</h6>
-            <p class="card-text">46546131</p>
+            <p class="card-text">{{shipDate | date}}</p>
           </div>
         </div> </div>
     </div>
-
-
     </div>
 </div>
 </div>

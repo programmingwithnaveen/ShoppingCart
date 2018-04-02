@@ -20,7 +20,7 @@ export class AppComponent {
     this.shoppingCartData.shoppingCartData$.subscribe(shoppingCart => {
       this.shoppingCart = shoppingCart;
     });
-    this.router.navigate(['product/All']);
+   this.router.navigate(['product/All']);
 
   }
 }
