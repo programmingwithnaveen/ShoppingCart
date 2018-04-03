@@ -13,7 +13,9 @@
     </thead>
     <tbody>
     <tr *ngFor="let item of inventoryList ">
-      <td><button class="btn btn-link" (click)="open(content,item)">{{item.productCode}}</button></td>
+      <td>
+        <button class="btn btn-link" (click)="open(content,item)">{{item.productCode}}</button>
+      </td>
       <td>{{item.productType}}</td>
       <td>{{item.productName}}</td>
       <td>{{item.unitPrice | currency}}</td>

@@ -1,6 +1,5 @@
 ///<reference path="services/shopping-cart.data.ts"/>
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShoppingCart} from './shopping-cart/data/shopping-item';
 import {ShoppingCartData} from './services/shopping-cart.data';
 import {Router} from "@angular/router";
@@ -14,13 +13,14 @@ export class AppComponent {
   title = 'Shopping Cart';
 
 
-  shoppingCart: ShoppingCart ;
+  shoppingCart: ShoppingCart;
+
   constructor(private router: Router, private shoppingCartData: ShoppingCartData) {
-   // this.shoppingCart=this.shoppingCartData.getCheckout();
+    // this.shoppingCart=this.shoppingCartData.getCheckout();
     this.shoppingCartData.shoppingCartData$.subscribe(shoppingCart => {
       this.shoppingCart = shoppingCart;
     });
-   this.router.navigate(['product/All']);
+    //this.router.navigate(['product/All']);
 
   }
 }

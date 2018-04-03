@@ -6,16 +6,23 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   selector: 'app-manage-orders',
   templateUrl: './manage-orders.component.html'
 })
-export class manageOrders implements OnInit{
+export class manageOrders implements OnInit {
 
   orders;
-  constructor(private modalService: NgbModal,private shoppingServices:ShoppingServices){
+
+  constructor(private modalService: NgbModal, private shoppingServices: ShoppingServices) {
 
   }
+
   ngOnInit() {
 
-      this.getOrderedList();
+    this.getOrderedList();
 
+  }
+
+  open(item) {
+    const m = this.modalService.open(manageOrders);
+    m.componentInstance.item = item;
   }
 
   private getOrderedList() {
@@ -23,11 +30,6 @@ export class manageOrders implements OnInit{
       this.orders = response;
       console.log(this.orders);
     });
-  }
-
-  open(item) {
-   const m= this.modalService.open(manageOrders);
-   m.componentInstance.item=item;
   }
 
 

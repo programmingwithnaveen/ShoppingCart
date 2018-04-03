@@ -19,7 +19,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private shoppingServices: ShoppingServices,
               private route: ActivatedRoute,
               private router: Router) {
-   // this.getProductList();
+    // this.getProductList();
     console.log('-----------shopping cart const-------');
     console.log(this.shoppingCart);
     console.log('------------------');
@@ -28,11 +28,11 @@ export class ShoppingCartComponent implements OnInit {
 
   getProductList() {
     this.shoppingServices.getProductList('/productlist').subscribe((response) => {
-       this.response = response;
-       if ( this.productType !== 'All') {
-         this.response = this.response.filter(item => item.productType === this.productType);
-       }
-      while (this.response.length ) {
+      this.response = response;
+      if (this.productType !== 'All') {
+        this.response = this.response.filter(item => item.productType === this.productType);
+      }
+      while (this.response.length) {
         this.shoppingInventory.push(this.response.splice(0, 3));
       }
 
@@ -49,24 +49,30 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   updateShoppingCart(item) {
-    const index = this.shoppingCart.shoppingItem.findIndex(function (existItem) { return existItem.productName === item.productName; });
+    const index = this.shoppingCart.shoppingItem.findIndex(function (existItem) {
+      return existItem.productName === item.productName;
+    });
     if (index > -1) {
       this.shoppingCart.shoppingItem[index] = item;
     } else {
       this.shoppingCart.shoppingItem.push(item);
     }
-    if(item.quantity === 0) {
-      let index=this.shoppingCart.shoppingItem.findIndex((i)=>  i.productName === item.productName);
-      this.shoppingCart.shoppingItem.splice(index,1);
+    if (item.quantity === 0) {
+      let index = this.shoppingCart.shoppingItem.findIndex((i) => i.productName === item.productName);
+      this.shoppingCart.shoppingItem.splice(index, 1);
     }
-   console.log(this.shoppingCart);
+    console.log(this.shoppingCart);
   }
 
   getSelectedQuantity(productName: string): number {
-    let temp: ShoppingItem ;
+    let temp: ShoppingItem;
     let quantity = 0;
-    if (this.shoppingCart) { temp = this.shoppingCart.shoppingItem.find((item) => item.productName === productName);}
-    if (temp) { quantity = temp.quantity; }
+    if (this.shoppingCart) {
+      temp = this.shoppingCart.shoppingItem.find((item) => item.productName === productName);
+    }
+    if (temp) {
+      quantity = temp.quantity;
+    }
     return quantity;
   }
 

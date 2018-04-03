@@ -3,8 +3,8 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="nav navbar-nav navbar-left">
       <li>
-          <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>
-       <span class="fa-stack  fa-1x">
+        <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>
+        <span class="fa-stack  fa-1x">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-inverse fa-stack-1x">{{shoppingCart?.shoppingItem?.length}}</i>
     </span>
@@ -15,10 +15,12 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <div ngbDropdown class="d-inline-block ">
-            <button class="btn btn-outline-secondary " style="width: 11rem;" id="dropdownBasic1" ngbDropdownToggle>John</button>
+            <button class="btn btn-outline-secondary " style="width: 11rem;" id="dropdownBasic1" ngbDropdownToggle>
+              John
+            </button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <button class="dropdown-item" routerLink="/admin/manageorder">Manage Orders</button>
-               <button class="dropdown-item" routerLink="/admin/manageinventory">Manage Inventory</button>
+              <button class="dropdown-item" routerLink="/admin/manageinventory">Manage Inventory</button>
 
             </div>
           </div>

@@ -7,15 +7,22 @@ import {ShoppingServices} from "../services/shopping.services";
   selector: 'app-manage-inventory',
   templateUrl: './manage-inventory.component.html'
 })
-export class manageInventory implements OnInit{
+export class manageInventory implements OnInit {
   inventoryList;
-  constructor(private modalService: NgbModal,private shoppingServices:ShoppingServices){
+
+  constructor(private modalService: NgbModal, private shoppingServices: ShoppingServices) {
 
   }
+
   ngOnInit() {
 
     this.getOrderedList();
 
+  }
+
+  open(item) {
+    const m = this.modalService.open(manageOrders);
+    m.componentInstance.item = item;
   }
 
   private getOrderedList() {
@@ -23,11 +30,6 @@ export class manageInventory implements OnInit{
       this.inventoryList = response;
       console.log(this.inventoryList);
     });
-  }
-
-  open(item) {
-    const m= this.modalService.open(manageOrders);
-    m.componentInstance.item=item;
   }
 
 }

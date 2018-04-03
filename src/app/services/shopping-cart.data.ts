@@ -6,16 +6,17 @@ import {ShoppingCart} from '../shopping-cart/data/shopping-item';
 export class ShoppingCartData {
   private shoppingCart = new Subject<ShoppingCart>();
   shoppingCartData$ = this.shoppingCart.asObservable();
-  private checkout:ShoppingCart;
+  private checkout: ShoppingCart;
+
   setShoppingCart(shoppingCart: ShoppingCart) {
-      this.shoppingCart.next(shoppingCart);
+    this.shoppingCart.next(shoppingCart);
   }
 
-  setCheckout(shoppingCart:ShoppingCart) {
+  setCheckout(shoppingCart: ShoppingCart) {
     this.checkout = shoppingCart;
   }
 
-  getCheckout():ShoppingCart {
+  getCheckout(): ShoppingCart {
     return this.checkout;
   }
 

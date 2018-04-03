@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ShoppingItem} from '../data/shopping-item';
 
 @Component({
@@ -19,7 +19,8 @@ import {ShoppingItem} from '../data/shopping-item';
             +
           </button>
           <span class="text-center">{{quantity}} in cart</span>
-          <button (click)="updateQuantity(false)" [disabled]="quantity <= 0 " class="btn btn-secondary" style="float: right;">
+          <button (click)="updateQuantity(false)" [disabled]="quantity <= 0 " class="btn btn-secondary"
+                  style="float: right;">
             -
           </button>
         </ng-template>
@@ -30,14 +31,14 @@ import {ShoppingItem} from '../data/shopping-item';
 export class ProductItemComponent {
 
   @Input() unitPrice: number;
+  totalPrice: number = this.unitPrice;
   @Input() productName: string;
   @Input() src: string;
-  @Input() quantity ;
-  @Input() uom:string;
-  totalPrice: number = this.unitPrice;
-
+  @Input() quantity;
+  @Input() uom: string;
   @Output() updateShoppingCart = new EventEmitter();
   item;
+
   constructor() {
   }
 
@@ -52,7 +53,7 @@ export class ProductItemComponent {
     this.item.totalPrice = this.totalPrice;
     this.item.imagePath = this.src;
 
-      this.updateShoppingCart.emit(this.item);
+    this.updateShoppingCart.emit(this.item);
 
   }
 }

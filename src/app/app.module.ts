@@ -19,13 +19,13 @@ import {manageInventory} from "./admin/manage-inventory.component";
 
 
 const appRoutes: Routes = [
-  { path: '',   component: ShoppingCartNavigateComponent },
-  { path: 'product/checkout',   component: CheckoutComponent },
-  { path: 'product/submit',   component: SubmitComponent },
-  { path: 'product/status',   component: SubmitConfirmationComponent },
-  { path: 'product/:type',   component: ShoppingCartNavigateComponent },
-  { path: 'admin/manageorder',   component: manageOrders },
-  { path: 'admin/manageinventory',   component: manageInventory }
+  {path: '', component: ShoppingCartNavigateComponent},
+  {path: 'product/checkout', component: CheckoutComponent},
+  {path: 'product/submit', component: SubmitComponent},
+  {path: 'product/status', component: SubmitConfirmationComponent},
+  {path: 'product/:type', component: ShoppingCartNavigateComponent},
+  {path: 'admin/manageorder', component: manageOrders},
+  {path: 'admin/manageinventory', component: manageInventory}
 
 ];
 
@@ -51,9 +51,9 @@ const appRoutes: Routes = [
 
   ],
   providers: [ShoppingServices,
-    ShoppingCartData,[Location, {provide: LocationStrategy, useClass: HashLocationStrategy}]],
+    ShoppingCartData, [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}]],
   bootstrap: [AppComponent],
-  entryComponents : [manageOrders]
+  entryComponents: [manageOrders]
 })
 export class AppModule {
 }
