@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ShoppingCartData} from "../../services/shopping-cart.data";
+import {ShoppingCartDataSource} from "../../services/shopping-cart.data";
 import {ShoppingCart} from "../data/shopping-item";
 
 @Component({
@@ -9,13 +9,14 @@ import {ShoppingCart} from "../data/shopping-item";
 export class SubmitConfirmationComponent {
   shoppingCart: ShoppingCart;
   orderDate: Date;
-  shipDate: Date;
+  deliveryDate: Date;
 
-  constructor(private shoppingCartData: ShoppingCartData) {
+  constructor(private shoppingCartData: ShoppingCartDataSource) {
     this.shoppingCart = new ShoppingCart();
-    this.shoppingCartData.setCheckout(this.shoppingCart);
+    this.shoppingCartData.setShoppingCart(this.shoppingCart);
+    this.shoppingCartData.setShoppingCartDataSource(this.shoppingCart);
     this.orderDate = new Date();
-    this.shipDate = new Date();
-    this.shipDate.setDate(this.shipDate.getDate() + 2);
+    this.deliveryDate = new Date();
+    this.deliveryDate.setDate(this.deliveryDate.getDate() + 1);
   }
 }

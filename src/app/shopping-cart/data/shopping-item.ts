@@ -1,5 +1,5 @@
 export class ShoppingCart {
-  shoppingItem: ShoppingItem[] = new Array<ShoppingItem>();
+  shoppingItem: ShoppingItem[] = [];
   public name: string = '';
   public address: string = '';
   public address2: string = '';

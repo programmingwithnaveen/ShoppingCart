@@ -1,7 +1,7 @@
 ///<reference path="services/shopping-cart.data.ts"/>
 import {Component} from '@angular/core';
 import {ShoppingCart} from './shopping-cart/data/shopping-item';
-import {ShoppingCartData} from './services/shopping-cart.data';
+import {ShoppingCartDataSource} from './services/shopping-cart.data';
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,16 +11,13 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'Shopping Cart';
-
-
   shoppingCart: ShoppingCart;
 
-  constructor(private router: Router, private shoppingCartData: ShoppingCartData) {
-    // this.shoppingCart=this.shoppingCartData.getCheckout();
+  constructor(private router: Router, private shoppingCartData: ShoppingCartDataSource) {
     this.shoppingCartData.shoppingCartData$.subscribe(shoppingCart => {
       this.shoppingCart = shoppingCart;
     });
-    //this.router.navigate(['product/All']);
+    this.router.navigate(['product/All']);
 
   }
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {manageOrders} from "./manage-orders.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ShoppingServices} from "../services/shopping.services";
+import {ShoppingServices} from "../../services/shopping.services";
 
 @Component({
   selector: 'app-manage-inventory',

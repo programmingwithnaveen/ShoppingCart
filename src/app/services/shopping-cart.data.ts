@@ -3,21 +3,21 @@ import {Subject} from 'rxjs/Subject';
 import {ShoppingCart} from '../shopping-cart/data/shopping-item';
 
 @Injectable()
-export class ShoppingCartData {
-  private shoppingCart = new Subject<ShoppingCart>();
-  shoppingCartData$ = this.shoppingCart.asObservable();
-  private checkout: ShoppingCart;
+export class ShoppingCartDataSource {
+  private shoppingCartDataSource = new Subject<ShoppingCart>();
+  shoppingCartData$ = this.shoppingCartDataSource.asObservable();
+  private shoppingCart: ShoppingCart;
+
+  setShoppingCartDataSource(shoppingCart: ShoppingCart) {
+    this.shoppingCartDataSource.next(shoppingCart);
+  }
 
   setShoppingCart(shoppingCart: ShoppingCart) {
-    this.shoppingCart.next(shoppingCart);
+    this.shoppingCart = shoppingCart;
   }
 
-  setCheckout(shoppingCart: ShoppingCart) {
-    this.checkout = shoppingCart;
-  }
-
-  getCheckout(): ShoppingCart {
-    return this.checkout;
+  getShoppingCart(): ShoppingCart {
+    return this.shoppingCart;
   }
 
 }

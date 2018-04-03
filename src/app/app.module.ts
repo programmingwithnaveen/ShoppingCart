@@ -7,15 +7,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ShoppingCartNavigateComponent} from './shopping-cart/shopping-cart-navigate.component';
-import {ShoppingCartData} from './services/shopping-cart.data';
+import {ShoppingCartDataSource} from './services/shopping-cart.data';
 import {CheckoutComponent} from "./shopping-cart/checkout/checkout.component";
 import {SubmitComponent} from "./shopping-cart/submit/submit.component";
 import {FormsModule} from "@angular/forms";
 import {SubmitConfirmationComponent} from "./shopping-cart/submit/submit-confirmation.component";
 import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {manageOrders} from "./admin/manage-orders.component";
-import {manageInventory} from "./admin/manage-inventory.component";
+import {manageOrders} from "./shopping-cart/admin/manage-orders.component";
+import {manageInventory} from "./shopping-cart/admin/manage-inventory.component";
 
 
 const appRoutes: Routes = [
@@ -51,7 +51,7 @@ const appRoutes: Routes = [
 
   ],
   providers: [ShoppingServices,
-    ShoppingCartData, [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}]],
+    ShoppingCartDataSource, [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}]],
   bootstrap: [AppComponent],
   entryComponents: [manageOrders]
 })

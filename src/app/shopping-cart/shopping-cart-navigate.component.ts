@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingCart} from './data/shopping-item';
-import {ShoppingCartData} from '../services/shopping-cart.data';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ShoppingCartDataSource} from '../services/shopping-cart.data';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-shopping-navigate-component',
@@ -40,14 +40,14 @@ export class ShoppingCartNavigateComponent implements OnInit{
   shoppingCart: ShoppingCart;
   productType;
 
-  constructor(private shoppingCartData: ShoppingCartData, private route: ActivatedRoute) {
-    console.log('---------------inmain const---');
-    this.shoppingCart = this.shoppingCartData.getCheckout();
+  constructor(private shoppingCartData: ShoppingCartDataSource, private route: ActivatedRoute) {
+
+    this.shoppingCart = this.shoppingCartData.getShoppingCart();
     if (!this.shoppingCart) {
       this.shoppingCart = new ShoppingCart();
-      console.log('---------------reinitiazlingin---');
+      console.log('shopping cart reinitalizing');
+      this.shoppingCartData.setShoppingCartDataSource(this.shoppingCart);
       this.shoppingCartData.setShoppingCart(this.shoppingCart);
-      this.shoppingCartData.setCheckout(this.shoppingCart);
     }
     console.log(this.shoppingCart);
   }

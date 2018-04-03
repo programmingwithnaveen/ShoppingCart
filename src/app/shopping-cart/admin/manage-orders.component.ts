@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ShoppingServices} from "../services/shopping.services";
+import {ShoppingServices} from "../../services/shopping.services";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({

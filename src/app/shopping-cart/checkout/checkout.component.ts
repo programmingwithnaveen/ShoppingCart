@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ShoppingCart, ShoppingItem} from "../data/shopping-item";
-import {ShoppingCartData} from "../../services/shopping-cart.data";
+import {ShoppingCartDataSource} from "../../services/shopping-cart.data";
 
 @Component({
   selector: 'app-checkout',
@@ -10,8 +10,8 @@ import {ShoppingCartData} from "../../services/shopping-cart.data";
 export class CheckoutComponent {
   shoppingCart: ShoppingCart;
 
-  constructor(private shoppingCartData: ShoppingCartData) {
-    this.shoppingCart = this.shoppingCartData.getCheckout();
+  constructor(private shoppingCartData: ShoppingCartDataSource) {
+    this.shoppingCart = this.shoppingCartData.getShoppingCart();
   }
 
   private updateQuantity(invoked: boolean, item: ShoppingItem) {
@@ -26,9 +26,9 @@ export class CheckoutComponent {
 
   private totalPrice(): number {
     let totalPrice: number = 0;
-    console.log('-----------totalPrice-----------');
+
     this.shoppingCart.shoppingItem.forEach((item) => totalPrice += item.totalPrice);
-    console.log('-----------totalPrice-----------', totalPrice);
+
     return totalPrice;
   }
 
