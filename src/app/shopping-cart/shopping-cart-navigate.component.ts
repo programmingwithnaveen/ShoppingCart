@@ -8,7 +8,7 @@ import {ActivatedRoute} from "@angular/router";
   template: `
     <span class="m-2"></span>
     <div class="row">
-      <div class="col-2">
+      <div class="col-3">
 
         <ul class="list-group">
           <li class="list-group-item"><a class="nav-link" routerLink="/product/All">All Items</a></li>
@@ -27,13 +27,7 @@ import {ActivatedRoute} from "@angular/router";
         </nav>
         <app-shopping-cart [shoppingCart]="shoppingCart"></app-shopping-cart>
       </div>
-      <div class="col-1 m-3 ">
-        <div *ngIf="shoppingCart.shoppingItem.length > 0">
-          <a routerLink="/product/checkout">
-            <button class="btn btn-secondary">Checkout</button>
-          </a>
-        </div>
-      </div>
+   
     </div>`
 })
 export class ShoppingCartNavigateComponent implements OnInit{
