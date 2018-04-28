@@ -4,10 +4,10 @@ import {ShoppingCartDataSource} from "../../services/shopping-cart.data";
 
 @Component({
   selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  templateUrl: './ordersummary.component.html',
+  styleUrls: ['./ordersummary.component.css']
 })
-export class CheckoutComponent {
+export class OrderSummaryComponent {
   shoppingCart: ShoppingCart;
 
   constructor(private shoppingCartData: ShoppingCartDataSource) {
@@ -28,7 +28,7 @@ export class CheckoutComponent {
     let totalPrice: number = 0;
 
     this.shoppingCart.shoppingItem.forEach((item) => totalPrice += item.totalPrice);
-
+    this.shoppingCart.totalPrice=totalPrice;
     return totalPrice;
   }
 

@@ -26,7 +26,7 @@ export class manageInventory implements OnInit {
   }
 
   private getOrderedList() {
-    this.shoppingServices.getProductList('/productlist').subscribe((response) => {
+    this.shoppingServices.getProductList('/products').subscribe((response) => {
       this.inventoryList = response;
       console.log(this.inventoryList);
     });

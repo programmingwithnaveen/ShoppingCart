@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const baseURL = 'http://localhost:8081/shopping';
+const baseURL = 'http://localhost:8080/api/v1/shopping';
 
 @Injectable()
 export class ShoppingServices {

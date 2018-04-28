@@ -3,12 +3,14 @@
     <div *ngFor="let list of shoppingInventory">
       <div class="row">
         <div *ngFor="let item of list">
-          <div class="col-sm-2 m-sm-2">
+          <div class="col-sm-2 m-sm-1">
             <app-product-item [src]="item.productURL"
                               [productName]="item.productName"
                               [unitPrice]="item.unitPrice"
                               [uom]="item.uom"
+                              [productCode]="item.productCode"
                               [quantity]="getSelectedQuantity(item.productName)"
+                              [productType]="item.productType"
                               (updateShoppingCart)="updateShoppingCart($event)">
             </app-product-item>
           </div>

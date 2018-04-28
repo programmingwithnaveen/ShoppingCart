@@ -27,7 +27,7 @@ export class ShoppingCartComponent implements OnInit {
 
 
   getProductList() {
-    this.shoppingServices.getProductList('/productlist').subscribe((response) => {
+    this.shoppingServices.getProductList('/products').subscribe((response) => {
       this.response = response;
       if (this.productType !== 'All') {
         this.response = this.response.filter(item => item.productType === this.productType);

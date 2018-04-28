@@ -12,11 +12,14 @@ export class SubmitConfirmationComponent {
   deliveryDate: Date;
 
   constructor(private shoppingCartData: ShoppingCartDataSource) {
+    this.shoppingCart = this.shoppingCartData.getShoppingCart();
+    this.orderDate = new Date(this.shoppingCart.orderDate);
+    this.deliveryDate = new Date(this.shoppingCart.deliveryDate);
+
     this.shoppingCart = new ShoppingCart();
     this.shoppingCartData.setShoppingCart(this.shoppingCart);
     this.shoppingCartData.setShoppingCartDataSource(this.shoppingCart);
-    this.orderDate = new Date();
-    this.deliveryDate = new Date();
-    this.deliveryDate.setDate(this.deliveryDate.getDate() + 1);
+
+
   }
 }

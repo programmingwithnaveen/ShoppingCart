@@ -4,7 +4,7 @@ import {ShoppingItem} from '../data/shopping-item';
 @Component({
   selector: 'app-product-item',
   template: `
-    <div class="card" style="width: 13rem;">
+    <div class="card" style="width: 11rem;">
       <img src="{{src}}"/>
       <div class="card-body">
         <h5 class="card-title">{{productName}}</h5>
@@ -12,7 +12,7 @@ import {ShoppingItem} from '../data/shopping-item';
       </div>
       <div class="card-img-bottom">
         <div *ngIf="quantity == 0 ;else add_to_cart">
-          <button (click)="updateQuantity(true)" class="btn btn-secondary" style="width: 13rem;">Add to Cart</button>
+          <button (click)="updateQuantity(true)" class="btn btn-secondary" style="width: 11rem;">Add to Cart</button>
         </div>
         <ng-template #add_to_cart>
           <button (click)="updateQuantity(true)" class="btn btn-secondary">
@@ -36,6 +36,8 @@ export class ProductItemComponent {
   @Input() src: string;
   @Input() quantity;
   @Input() uom: string;
+  @Input() productCode: number;
+  @Input() productType:string;
   @Output() updateShoppingCart = new EventEmitter();
   item;
 
@@ -48,11 +50,12 @@ export class ProductItemComponent {
 
     this.item = new ShoppingItem();
     this.item.productName = this.productName;
-    this.item.unitPrice = this.unitPrice;
     this.item.quantity = this.quantity;
+    this.item.unitPrice = this.unitPrice;
     this.item.totalPrice = this.totalPrice;
-    this.item.imagePath = this.src;
-
+    this.item.productURL = this.src;
+    this.item.productCode=this.productCode;
+    this.item.productType=this.productType;
     this.updateShoppingCart.emit(this.item);
 
   }

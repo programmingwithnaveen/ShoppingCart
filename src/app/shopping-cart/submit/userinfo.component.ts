@@ -5,9 +5,9 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-submit-component',
-  templateUrl: `./submit.component.html`
+  templateUrl: `./userinfo.component.html`
 })
-export class SubmitComponent {
+export class UserinfoComponent {
   shoppingCart: ShoppingCart;
 
   constructor(private router: Router, private shoppingCartData: ShoppingCartDataSource) {
@@ -16,6 +16,11 @@ export class SubmitComponent {
 
   onSubmit() {
     console.log('submitted');
+    let orderDate=new Date();
+    let deliveryDate=new Date();
+    deliveryDate.setDate(deliveryDate.getDate()+2);
+    this.shoppingCart.orderDate=orderDate.toLocaleString();
+    this.shoppingCart.deliveryDate=deliveryDate.toLocaleString();
     console.log(this.shoppingCart);
     console.log(JSON.stringify(this.shoppingCart));
 

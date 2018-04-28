@@ -11,7 +11,7 @@
         <i class="fa fa-trash" aria-hidden="true"></i></button>
     </div>
     <div class="col-2 m-auto" *ngIf="shoppingCart?.shoppingItem?.length > 0"><a class="nav-link"
-                                                                                routerLink="/product/submit">
+                                                                                routerLink="/product/userinfo">
       <button class="btn btn-secondary" data-toggle="tooltip" title="Submit">Checkout</button>
     </a></div>
   </div>
@@ -21,25 +21,25 @@
   <div class="row">
     <div class="col-2 m-2"></div>
     <div class="col-2  m-auto">Product</div>
-    <div class="col-2  m-auto">Quantity</div>
+    <div class="col-3  m-auto">Quantity</div>
     <div class="col-2  m-auto">Price</div>
     <div class="col-2  m-auto">Action</div>
   </div>
   <div *ngFor="let list of shoppingCart?.shoppingItem">
     <div class="row">
       <div class="col-2 m-2">
-        <img src="{{list.imagePath}}"/>
+        <img src="{{list.productURL}}"/>
       </div>
       <div class="col-2  m-auto">
         {{ list.productName}}
       </div>
-      <div class="col-2  m-auto">
+      <div class="col-3  m-auto">
         <button (click)="updateQuantity(true,list)" class="btn btn-secondary">
           +
         </button>
         <span class="text-center">{{list.quantity}} in cart</span>
         <button (click)="updateQuantity(false,list)" [disabled]="list.quantity <= 0 " class="btn btn-secondary"
-                style="float: right;">
+               >
           -
         </button>
       </div>
@@ -56,7 +56,7 @@
   <div class="row row-bordered">
     <div class="col-2 m-2"></div>
     <div class="col-2 m-auto"></div>
-    <div class="col-2  m-auto">Total Price</div>
+    <div class="col-3  m-auto">Total Price</div>
     <div class="col-2  m-auto">{{ totalPrice() | currency }}</div>
     <div class="col-2  m-auto"></div>
   </div>

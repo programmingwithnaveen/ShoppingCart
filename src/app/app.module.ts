@@ -8,8 +8,8 @@ import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ShoppingCartNavigateComponent} from './shopping-cart/shopping-cart-navigate.component';
 import {ShoppingCartDataSource} from './services/shopping-cart.data';
-import {CheckoutComponent} from "./shopping-cart/checkout/checkout.component";
-import {SubmitComponent} from "./shopping-cart/submit/submit.component";
+import {OrderSummaryComponent} from "./shopping-cart/ordersummary/ordersummary.component";
+import {UserinfoComponent} from "./shopping-cart/submit/userinfo.component";
 import {FormsModule} from "@angular/forms";
 import {SubmitConfirmationComponent} from "./shopping-cart/submit/submit-confirmation.component";
 import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
@@ -20,8 +20,8 @@ import {manageInventory} from "./shopping-cart/admin/manage-inventory.component"
 
 const appRoutes: Routes = [
   {path: '', component: ShoppingCartNavigateComponent},
-  {path: 'product/checkout', component: CheckoutComponent},
-  {path: 'product/submit', component: SubmitComponent},
+  {path: 'product/summary', component: OrderSummaryComponent},
+  {path: 'product/userinfo', component: UserinfoComponent},
   {path: 'product/status', component: SubmitConfirmationComponent},
   {path: 'product/:type', component: ShoppingCartNavigateComponent},
   {path: 'admin/manageorder', component: manageOrders},
@@ -36,8 +36,8 @@ const appRoutes: Routes = [
     ProductItemComponent,
     ShoppingCartComponent,
     ShoppingCartNavigateComponent,
-    CheckoutComponent,
-    SubmitComponent,
+    OrderSummaryComponent,
+    UserinfoComponent,
     SubmitConfirmationComponent,
     manageOrders,
     manageInventory
