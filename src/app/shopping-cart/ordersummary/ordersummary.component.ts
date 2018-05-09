@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {ShoppingCart, ShoppingItem} from "../data/shopping-item";
 import {ShoppingCartDataSource} from "../../services/shopping-cart.data";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-checkout',
@@ -10,7 +11,7 @@ import {ShoppingCartDataSource} from "../../services/shopping-cart.data";
 export class OrderSummaryComponent {
   shoppingCart: ShoppingCart;
 
-  constructor(private shoppingCartData: ShoppingCartDataSource) {
+  constructor(private shoppingCartData: ShoppingCartDataSource, private router: Router) {
     this.shoppingCart = this.shoppingCartData.getShoppingCart();
   }
 
@@ -28,7 +29,7 @@ export class OrderSummaryComponent {
     let totalPrice: number = 0;
 
     this.shoppingCart.shoppingItem.forEach((item) => totalPrice += item.totalPrice);
-    this.shoppingCart.totalPrice=totalPrice;
+    this.shoppingCart.totalPrice = totalPrice;
     return totalPrice;
   }
 
@@ -41,5 +42,7 @@ export class OrderSummaryComponent {
 
   private clearShoppingCart() {
     this.shoppingCart.shoppingItem = [];
+    this.router.navigate(['product/All']);
+
   }
 }

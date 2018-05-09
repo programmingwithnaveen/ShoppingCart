@@ -17,12 +17,8 @@ export class ShoppingCartComponent implements OnInit {
   productType = '';
 
   constructor(private shoppingServices: ShoppingServices,
-              private route: ActivatedRoute,
-              private router: Router) {
-    // this.getProductList();
-    console.log('-----------shopping cart const-------');
-    console.log(this.shoppingCart);
-    console.log('------------------');
+              private route: ActivatedRoute) {
+
   }
 
 

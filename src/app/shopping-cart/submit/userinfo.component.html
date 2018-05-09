@@ -1,53 +1,90 @@
-<div class="container" >
-  <div class="row"><div class="col-3"></div><div class="col-9 page-header">
-    <h1>Delivery Address </h1>
-  </div></div>
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-9 page-header">
+      <h1>Delivery Address </h1>
+    </div>
+  </div>
   <div class="row">
     <div class="col-3"></div>
     <div class="col-9">
-  <form (ngSubmit)="onSubmit()" >
+      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
 
-    <div class="form-group col-4">
-      <label for="uname">Name</label>
-      <input type="text" class="form-control" id="uname"
-             required placeholder="Name" name="uname"
-             [(ngModel)]="shoppingCart.username" #shoppingCart.name="ngModel">
-    </div>
-    <div class="form-group col-4">
-      <label for="address">Address</label>
-      <input type="text" class="form-control" id="address"
-             placeholder="1234 Main St" name="address"
-             [(ngModel)]="shoppingCart.address" #shoppingCart.address="ngModel">
-    </div>
+        <div class="form-group col-6">
+          <label for="uname">Name</label>
+          <input type="text" class="form-control" id="uname"
+                 required minlength="4" placeholder="Name" name="uname"
+                 [(ngModel)]="shoppingCart.username" #uname="ngModel">
+          <div *ngIf="uname.invalid && (uname.dirty || uname.touched)"
+               class="alert alert-danger">
+            <div *ngIf="uname.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="uname.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address"
+                 placeholder="1234 Main St" name="address" required
+                 [(ngModel)]="shoppingCart.address" #address="ngModel">
+          <div *ngIf="address.invalid && (address.dirty || address.touched)"
+               class="alert alert-danger">
+            <div *ngIf="address.errors.required">
+              Address is required.
+            </div>
+            <div *ngIf="address.errors.minlength">
+              Address must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
 
-    <div class="form-group col-4">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" name="inputAddress2"
-             placeholder="Apartment, studio, or floor"
-             [(ngModel)]="shoppingCart.address2" #shoppingCart.address2="ngModel">
-    </div>
+        <div class="form-group col-6">
+          <label for="inputAddress2">Address 2</label>
+          <input type="text" class="form-control" id="inputAddress2" name="inputAddress2"
+                 placeholder="Apartment, studio, or floor"
+                 [(ngModel)]="shoppingCart.address2" #address2="ngModel">
+        </div>
 
-    <div class="form-group col-4">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity" name="inputCity"
-             [(ngModel)]="shoppingCart.city" #shoppingCart.city="ngModel">
-    </div>
-    <div class="form-group col-4">
-      <label for="inputState">State</label>
-      <input type="text" class="form-control" id="inputState" name="inputState"
-             [(ngModel)]="shoppingCart.state" #shoppingCart.state="ngModel">
-    </div>
-    <div class="form-group col-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip" name="inputZip"
-             [(ngModel)]="shoppingCart.zip" #shoppingCart.zip="ngModel">
-    </div>
-    <div class="form-group col-2">
-      <button type="submit" class="btn btn-primary">Place order</button>
-    </div>
-
-
-  </form>
+        <div class="form-group col-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" id="inputCity" name="inputCity"
+                 required [(ngModel)]="shoppingCart.city" #inputCity="ngModel">
+          <div *ngIf="inputCity.invalid && (inputCity.dirty || inputCity.touched)"
+               class="alert alert-danger">
+            <div *ngIf="inputCity.errors.required">
+              City is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label for="inputState">State</label>
+          <input type="text" class="form-control" id="inputState" name="inputState"
+                 required [(ngModel)]="shoppingCart.state" #inputState="ngModel">
+          <div *ngIf="inputState.invalid && (inputState.dirty || inputState.touched)"
+               class="alert alert-danger">
+            <div *ngIf="inputState.errors.required">
+              State is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label for="inputZip">Zip</label>
+          <input type="number" class="form-control" id="inputZip" name="inputZip"
+                 required [(ngModel)]="shoppingCart.zip" #inputZip="ngModel">
+          <div *ngIf="inputZip.invalid && (inputZip.dirty || inputZip.touched)"
+               class="alert alert-danger">
+            <div *ngIf="inputZip.errors.required">
+              Zip is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Place order</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

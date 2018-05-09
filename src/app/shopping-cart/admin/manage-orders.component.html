@@ -1,12 +1,12 @@
 <span class="m-2"></span>
-<div class="container">
+<div class="container" style="overflow: auto;height: 375px;">
   <table class="table">
     <thead class="thead-light">
     <tr>
       <th scope="col">Order No</th>
       <th scope="col">UserName</th>
       <th scope="col">Order Date</th>
-      <th scope="col">Delivery Date</th>
+      <th scope="col">Delivery Date(Est)</th>
       <th scope="col">Total Cost</th>
 
     </tr>
@@ -14,9 +14,9 @@
     <tbody>
     <tr *ngFor="let item of orders ">
       <td>
-        <button class="btn btn-link" (click)="open(content,item)">{{item.orderNo}}</button>
+        <button class="btn btn-link" (click)="open(item)">{{item.uorderNo}}</button>
       </td>
-      <td>{{item.userName}}</td>
+      <td>{{item.username}}</td>
       <td>{{item.orderDate}}</td>
       <td>{{item.deliveryDate}}</td>
       <td>{{item.totalPrice | currency}}</td>
@@ -27,17 +27,4 @@
 </div>
 
 
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>{{item}}</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-  </div>
-</ng-template>
+

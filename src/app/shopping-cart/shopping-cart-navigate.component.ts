@@ -27,10 +27,10 @@ import {ActivatedRoute} from "@angular/router";
         </nav>
         <app-shopping-cart [shoppingCart]="shoppingCart"></app-shopping-cart>
       </div>
-   
+
     </div>`
 })
-export class ShoppingCartNavigateComponent implements OnInit{
+export class ShoppingCartNavigateComponent implements OnInit {
   shoppingCart: ShoppingCart;
   productType;
 

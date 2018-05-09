@@ -5,10 +5,10 @@ import {ShoppingItem} from '../data/shopping-item';
   selector: 'app-product-item',
   template: `
     <div class="card" style="width: 11rem;">
-      <img src="{{src}}"/>
+      <img src="{{item.productURL}}"/>
       <div class="card-body">
-        <h5 class="card-title">{{productName}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{unitPrice | currency}}/{{uom}}</h6>
+        <h6 class="card-title">{{item.productName}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{item.unitPrice | currency}}/{{item.uom}}</h6>
       </div>
       <div class="card-img-bottom">
         <div *ngIf="quantity == 0 ;else add_to_cart">
@@ -18,7 +18,7 @@ import {ShoppingItem} from '../data/shopping-item';
           <button (click)="updateQuantity(true)" class="btn btn-secondary">
             +
           </button>
-          <span class="text-center">{{quantity}} in cart</span>
+          <span class="p-3">{{quantity}} in cart</span>
           <button (click)="updateQuantity(false)" [disabled]="quantity <= 0 " class="btn btn-secondary"
                   style="float: right;">
             -
@@ -30,33 +30,43 @@ import {ShoppingItem} from '../data/shopping-item';
 })
 export class ProductItemComponent {
 
-  @Input() unitPrice: number;
-  totalPrice: number = this.unitPrice;
-  @Input() productName: string;
-  @Input() src: string;
-  @Input() quantity;
-  @Input() uom: string;
-  @Input() productCode: number;
-  @Input() productType:string;
-  @Output() updateShoppingCart = new EventEmitter();
-  item;
 
+  totalPrice: number;
+
+  @Input() quantity;
+
+  @Output() updateShoppingCart = new EventEmitter();
+  shoppingItem;
+  @Input() item;
+
+  /*
+  [src]="item.productURL"
+                                [productName]="item.productName"
+                                [unitPrice]="item.unitPrice"
+                                [uom]="item.uom"
+                                [productCode]="item.productCode"
+                                [quantity]="getSelectedQuantity(item.productName)"
+                                [productType]="item.productType"
+   */
   constructor() {
   }
 
   private updateQuantity(invoked: boolean) {
-    this.quantity = invoked ? this.quantity + 1 : this.quantity - 1;
-    this.totalPrice = this.quantity > 0 ? this.quantity * this.unitPrice : this.unitPrice;
 
-    this.item = new ShoppingItem();
-    this.item.productName = this.productName;
-    this.item.quantity = this.quantity;
-    this.item.unitPrice = this.unitPrice;
-    this.item.totalPrice = this.totalPrice;
-    this.item.productURL = this.src;
-    this.item.productCode=this.productCode;
-    this.item.productType=this.productType;
-    this.updateShoppingCart.emit(this.item);
+
+    this.totalPrice = this.item.unitPrice;
+    this.quantity = invoked ? this.quantity + 1 : this.quantity - 1;
+    this.totalPrice = this.quantity > 0 ? this.quantity * this.item.unitPrice : this.item.unitPrice;
+
+    this.shoppingItem = new ShoppingItem();
+    this.shoppingItem.productName = this.item.productName;
+    this.shoppingItem.quantity = this.quantity;
+    this.shoppingItem.unitPrice = this.item.unitPrice;
+    this.shoppingItem.totalPrice = this.totalPrice;
+    this.shoppingItem.productURL = this.item.productURL;
+    this.shoppingItem.productCode = this.item.productCode;
+    this.shoppingItem.productType = this.item.productType;
+    this.updateShoppingCart.emit(this.shoppingItem);
 
   }
 }

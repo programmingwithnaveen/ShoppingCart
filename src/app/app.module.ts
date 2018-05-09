@@ -16,6 +16,10 @@ import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {manageOrders} from "./shopping-cart/admin/manage-orders.component";
 import {manageInventory} from "./shopping-cart/admin/manage-inventory.component";
+import {ManageOrdersDetailsComponent} from "./shopping-cart/admin/manage-orders-details.component";
+import {ManageInventoryDetailsComponent} from "./shopping-cart/admin/manage-inventory-details.component";
+import {ManageInventoryCreateNewComponent} from "./shopping-cart/admin/manage-inventory-create-new.component";
+import {UserprofileComponent} from "./shopping-cart/profile/userprofile.component";
 
 
 const appRoutes: Routes = [
@@ -25,7 +29,8 @@ const appRoutes: Routes = [
   {path: 'product/status', component: SubmitConfirmationComponent},
   {path: 'product/:type', component: ShoppingCartNavigateComponent},
   {path: 'admin/manageorder', component: manageOrders},
-  {path: 'admin/manageinventory', component: manageInventory}
+  {path: 'admin/manageinventory', component: manageInventory},
+  {path: 'user/profile', component: UserprofileComponent}
 
 ];
 
@@ -40,7 +45,11 @@ const appRoutes: Routes = [
     UserinfoComponent,
     SubmitConfirmationComponent,
     manageOrders,
-    manageInventory
+    manageInventory,
+    ManageOrdersDetailsComponent,
+    ManageInventoryDetailsComponent,
+    ManageInventoryCreateNewComponent,
+    UserprofileComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -53,7 +62,8 @@ const appRoutes: Routes = [
   providers: [ShoppingServices,
     ShoppingCartDataSource, [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}]],
   bootstrap: [AppComponent],
-  entryComponents: [manageOrders]
+  entryComponents: [manageOrders, ManageOrdersDetailsComponent,
+    ManageInventoryDetailsComponent, ManageInventoryCreateNewComponent]
 })
 export class AppModule {
 }
